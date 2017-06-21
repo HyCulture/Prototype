@@ -2,6 +2,9 @@ import time
 import datetime
 
 while True :
+	"""
+	Permet de récupérer les données du capteur de température
+	"""
 	date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	tfile = open("/sys/bus/w1/devices/28-80000003962a/w1_slave")
 	text = tfile.read()
