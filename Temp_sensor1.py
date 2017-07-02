@@ -7,16 +7,15 @@ tfile = open("/sys/bus/w1/devices/28-80000003962a/w1_slave")
 text = tfile.read()
 tfile.close()
 
-#Write in CSV file if the temperature sensor is active
+#Convert data temp in degres
 if tfile is True:
     read_seconde_line = text.split("\n")[1] #Skip the first line
     tempData =  read_seconde_line.split(" ")[9] #Read only temp data
     temperature = float(tempData[2:]) #Get data
     temperature = temperature / 1000 #Transform data in degres temprature
-else :
-    return False
 
 
+#Write in CSV file the temperature sensor
 header = [
      u'Date',
      u'Time',
