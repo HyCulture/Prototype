@@ -32,10 +32,10 @@ def write_csv(header, values):
     Write all data in CSV files
     """
     files = open('Data_temperature.csv', 'w')
-    ligneEntete = ";".join(entetes) + "\n"
+    ligneEntete = ";".join(header) + "\n"
     files.write(ligneEntete)
-    for valeur in valeurs:
-        ligne = ";".join(valeur) + "\n"
+    for _ in values:
+        ligne = ";".join(values) + "\n"
         files.write(ligne)
 
     files.close()
