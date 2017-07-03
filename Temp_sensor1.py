@@ -35,7 +35,7 @@ def write_csv(header, values):
     Write all data in CSV files
     """
     with open('Data_temperature.csv', 'w') as files:
-        writer = csv.writer((csvfile), delimiter=',')
+        writer = csv.writer((files), delimiter=',')
         writer.writerows(header)
     for _ in values:
         writer.writerow(values)
