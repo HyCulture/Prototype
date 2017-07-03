@@ -17,25 +17,25 @@ if tfile is True:
 
 #Write in CSV file the temperature sensor
 header = [
-     u'Date',
+     [u'Date',
      u'Time',
-     u'Data_temp',
+     u'Data_temp']
 ]
 
-values = [
-     [u'date', u'date', u'temperature']
-]
+values = []
+values.append(date[0:10])
+values.append(date[10:20])
+values.append(str(temperature))
 
 def write_csv(header, values):
     """
     Write all data in CSV files
     """
-    files = open('Data_temperature.csv', 'w')
-    ligneHeader = ";".join(header) + "\n"
-    files.write(ligneHeader)
+    with open('Data_temperature.csv', 'w', newline='') as files:
+    writer = csv.writer((csvfile), delimiter=',')
+    writer.writerows(header)
     for _ in values:
-        ligne = ";".join(values) + "\n"
-        files.write(ligne)
+        writer.writerow(values)
 
     files.close()
     time.sleep(5)
