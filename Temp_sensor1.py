@@ -8,13 +8,14 @@ text = tfile.read()
 tfile.close()
 
 #Convert data temp in degres
-temperature = 0
-if tfile is True:
-    read_seconde_line = text.split("\n")[1] #Skip the first line
-    tempData =  read_seconde_line.split(" ")[9] #Read only temp data
-    temperature = float(tempData[2:]) #Get data
-    temperature = temperature / 1000 #Transform data in degres temprature
+def convert_temp(file):
+    if file is True:
+        read_seconde_line = text.split("\n")[1] #Skip the first line
+        tempData =  read_seconde_line.split(" ")[9] #Read only temp data
+        temperature = float(tempData[2:]) #Get data
+        temperature = temperature / 1000 #Transform data in degres temprature
 
+convert_temp(tfile)
 
 #Write in CSV file the temperature sensor
 header = [
@@ -26,7 +27,7 @@ header = [
 values = []
 values.append(date[0:10])
 values.append(date[10:20])
-values.append(str(temperature))
+values.append(float(temperature))
 
 def write_csv(header, values):
     """
