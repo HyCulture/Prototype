@@ -13,15 +13,10 @@ while True:
         tfile.close()
 
         #Convert data temp in degres
-        def convert_temp(file):
-            temperature = 0
-            if file is True:
-                read_seconde_line = text.split("\n")[1] #Skip the first line
-                tempData =  read_seconde_line.split(" ")[9] #Read only temp data
-                temperature = float(tempData[2:]) #Get data
-                temperature = temperature / 1000 #Transform data in degres temprature
-
-        convert_temp(tfile)
+        read_seconde_line = text.split("\n")[1] #Skip the first line
+        tempData =  read_seconde_line.split(" ")[9] #Read only temp data
+        temperature = float(tempData[2:]) #Get data
+        temperature = temperature / 1000 #Transform data in degres temprature
 
         #Write in CSV file the temperature sensor
         header = [
@@ -49,12 +44,12 @@ while True:
 
         write_csv(header, values)
 
-        #If temperature it's get with success or not :
-        if temprature is not None:
-            print('Temp={0:0.1f}* '.format(temperature))
-        else:
-            print('Failed to get reading. Try again!')
-            sys.exit(1)
-
     except KeyboardInterrupt:
         quit()
+
+#If temperature it's get with success or not :
+if temperature is not None:
+    print('Temp={0:0.1f}* '.format(temperature))
+else:
+    print('Failed to get reading. Try again!')
+    sys.exit(1)
