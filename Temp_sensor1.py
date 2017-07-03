@@ -9,6 +9,7 @@ tfile.close()
 
 #Convert data temp in degres
 def convert_temp(file):
+    temperature = 0
     if file is True:
         read_seconde_line = text.split("\n")[1] #Skip the first line
         tempData =  read_seconde_line.split(" ")[9] #Read only temp data
@@ -33,7 +34,7 @@ def write_csv(header, values):
     """
     Write all data in CSV files
     """
-    with open('Data_temperature.csv', 'w', newline='') as files:
+    with open('Data_temperature.csv', 'w') as files:
         writer = csv.writer((csvfile), delimiter=',')
         writer.writerows(header)
     for _ in values:
