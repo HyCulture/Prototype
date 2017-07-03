@@ -8,6 +8,7 @@ text = tfile.read()
 tfile.close()
 
 #Convert data temp in degres
+temperature = 0
 if tfile is True:
     read_seconde_line = text.split("\n")[1] #Skip the first line
     tempData =  read_seconde_line.split(" ")[9] #Read only temp data
