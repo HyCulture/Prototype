@@ -38,9 +38,10 @@ while True:
                 writer = csv.writer((files), delimiter=',')
                 writer.writerows(header)
                 writer.writerow(values)
-
-            files.close()
+                
             time.sleep(5)
+            files.close()
+
 
         write_csv(header, values)
 
