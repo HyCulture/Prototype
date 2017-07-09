@@ -8,16 +8,16 @@ Created on Mon Jul  3 22:09:18 2017
 
 #Importing libraries
 import time, datetime, os, csv, sys
-from NewLine import WriteLine
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
+hd = True
 while True:
     try:
         #define date
         date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        tfile = open("/sis/bus/w1/devices/w1_bus_master1/28-80000003962a/w1_slave.txt")
+        tfile = open("/sys/bus/w1/devices/28-8000002712a5/w1_slave")
         text = tfile.read()
         tfile.close()
 
@@ -35,19 +35,21 @@ while True:
         values.append(date[10:20])
         values.append(float(temperature))
 
-        with open('Data_temperature.csv', 'w') as files:
+            files = open('Data_temperature.csv', 'a')
             writer = csv.writer((files), delimiter=',')
-            writer.writerows(header)
+            if hd == True:
+                writer.writerows(header)
+                hd = False
             writer.writerow(str(values)+'\r\n')
             #If temperature it's get with success or not :
             if temperature is not None:
                 #new_line = writer.writerow(values)
                 print('Temp={0:0.1f} C°'.format(temperature))
-                time.sleep(10)
+                time.sleep(60)
+                files.close()
             else:
                 print('Failed to get reading. Try again!')
                 sys.exit(1)
-        files.close()
 
     except KeyboardInterrupt:
         quit()
