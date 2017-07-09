@@ -17,7 +17,7 @@ while True:
     try:
         #define date
         date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        tfile = open("w1_slave.txt")
+        tfile = open("/sis/bus/w1/devices/w1_bus_master1/28-80000003962a/w1_slave.txt")
         text = tfile.read()
         tfile.close()
 
