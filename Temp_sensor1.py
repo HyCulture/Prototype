@@ -40,12 +40,12 @@ while True:
             if hd == True:
                 writer.writerows(header)
                 hd = False
-            writer.writerow(str(values)+'\r\n')
+            writer.writerow(values)
             #If temperature it's get with success or not :
             if temperature is not None:
                 #new_line = writer.writerow(values)
                 print('Temp={0:0.1f} C°'.format(temperature))
-                time.sleep(60)
+                time.sleep(300)
                 files.close()
             else:
                 print('Failed to get reading. Try again!')
