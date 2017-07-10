@@ -43,7 +43,7 @@ while True:
             writer.writerow(values)
             #If temperature it's get with success or not :
             if temperature is not None:
-                #new_line = writer.writerow(values)
+                #print the temperature on the console
                 print('Temp={0:0.1f} C°'.format(temperature))
                 time.sleep(300)
                 files.close()
@@ -52,10 +52,13 @@ while True:
                 sys.exit(1)
 
     except KeyboardInterrupt:
+        #add the date to the name file
         os.system('mv Data_temperature.csv Data_temperature_'+ (str(date[0:10])) +'.csv')
+        #made secure copy thanks to scp to the raspberry server
         os.system('scp Data_temperature'+ (str(date[0:10])) +'.csv pi@192.168.1.13:/home/pi/hyculture/captemp_files')
         print('Done !')
         print('Delete previous file ...')
+        #delete the current file
         os.system('rm Data_temperature'+ (str(date[0:10])) +'.csv')
         print('Done !')
         quit()
