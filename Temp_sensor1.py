@@ -61,7 +61,7 @@ while True:
         print('Upload file 70%')
         print('Upload file 80%')
         print('Upload file 90%')
-        os.system('scp Data_temperature' + date[0:10] '.csv 192.168.1.13:/home/pi/data_sensor_temp')
+        os.system('scp Data_temperature' + %s '.csv 192.168.1.13:/home/pi/data_sensor_temp') % (date[0:10])
         print('Upload file 100%')
         print('Done !')
         quit()
