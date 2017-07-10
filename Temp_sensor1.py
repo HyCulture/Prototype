@@ -52,4 +52,16 @@ while True:
                 sys.exit(1)
 
     except KeyboardInterrupt:
+        print('Upload file 10%')
+        print('Upload file 20%')
+        print('Upload file 30%')
+        print('Upload file 40%')
+        print('Upload file 50%')
+        print('Upload file 60%')
+        print('Upload file 70%')
+        print('Upload file 80%')
+        print('Upload file 90%')
+        os.system('scp Data_temperature.csv 192.168.1.13:/home/pi/data_sensor_temp')
+        print('Upload file 100%')
+        print('Done !')
         quit()
