@@ -28,7 +28,7 @@ while True:
         temperature = temperature / 1000 #Transform data in degres temprature
 
         #Write in CSV file the temperature sensor
-        header = [[u'Date', u'Time', u'Data_temp']]
+        header = [[u'Date', u'Time', u'Temperature']]
 
         values = []
         values.append(date[0:10])
@@ -52,16 +52,10 @@ while True:
                 sys.exit(1)
 
     except KeyboardInterrupt:
-        print('Upload file 10%')
-        print('Upload file 20%')
-        print('Upload file 30%')
-        print('Upload file 40%')
-        print('Upload file 50%')
-        print('Upload file 60%')
-        print('Upload file 70%')
-        print('Upload file 80%')
-        print('Upload file 90%')
-        os.system('scp Data_temperature' + %s '.csv 192.168.1.13:/home/pi/data_sensor_temp') % (date[0:10])
-        print('Upload file 100%')
+        os.system('mv Data_temperature.csv Data_temperature_'+ (str(date[0:10])) +'.csv')
+        os.system('scp Data_temperature'+ (str(date[0:10])) +'.csv pi@192.168.1.13:/home/pi/hyculture/captemp_files')
+        print('Done !')
+        print('Delete previous file ...')
+        os.system('rm Data_temperature'+ (str(date[0:10])) +'.csv')
         print('Done !')
         quit()
